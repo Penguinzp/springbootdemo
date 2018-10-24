@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
+    <title>卡片页面</title>
+    <style>
+        .avatar {
+            width: 40px;
+            height: 40px;
+        }
+        .bar{
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default bar">
+    <div class="container">
+        <div class="navbar-left">
+            <h4>卡片</h4>
+        </div>
+        <div class="navbar-left">
+            <img th:src="@{'img/'+${user.avatar}}" class="img-circle avatar ">
+            <span th:text="${user.name}"></span>
+        </div>
+    </div>
+
+</nav>
+<div class="container">
+    <div class="col-md-3" th:each="card:${cardList}">
+        <div class="thumbnail">
+            <img th:src="@{'img/'+${card.imgLink}}">
+            <div class="caption">
+                <h3 th:text="${card.title}" class="text-center"></h3>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
